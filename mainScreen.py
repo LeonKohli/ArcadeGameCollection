@@ -258,4 +258,4 @@ def main():
     chooseGame()
 
 
-main()
+mainMenu()
