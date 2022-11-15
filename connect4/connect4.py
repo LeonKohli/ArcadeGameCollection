@@ -1,3 +1,4 @@
+
 # python game "4 wins/connect4/4 Gewinnt" in shell
 # 07.11.2022-10.11.2022 Leon Kohlhaußen
 # contributors Janneck Lehmann
@@ -10,6 +11,7 @@
 #
 # Copyright (c) 2020-2022, Leon Kohlhaussen, contributors Janneck Lehmann
 #
+
 import time
 import os
 import random  # random module to start with a random player
@@ -20,7 +22,7 @@ init(autoreset=True)
 
 # <<<<<<<<<< variables >>>>>>>>>>>>>>>>>
 won = False             # variable to check if a player has won
-players = ["🟡", "🔴"]  # player 1 is yellow and player 2 is red
+players = ["🟡", "🔴"]  # player 1 is yellow and player 2 is red    #? need to implement player for the login
 gameBoard = [
             ["", "", "", "", "", "", ""],   #7 collumns and 6 rows
             ["", "", "", "", "", "", ""], 
@@ -199,3 +201,4 @@ def mainGame():
         switchPlayer()
 
 mainGame()
+
