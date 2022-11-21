@@ -24,25 +24,30 @@ def mainMenu():
     print("                                                     ")
     print("Welcome to the main menu")
     print("1. Play a game")
-    print("2. View your statistics")
-    print("3. View your account")
-    print("4. View the game collection")
-    print("5. View the game collection on github")
-    print("6. Exit the game collection")
+    print("2. Create a new account")
+    print("3. View your statistics")
+    print("4. View your account")
+    print("5. View the game collection")
+    print("6. View the game collection on github")
+    print("7. Exit the game collection")
     mainMenuAnswer = input(">>> ")
     try:
         mainMenuAnswer = int(mainMenuAnswer)
         if mainMenuAnswer == 1:
             main()
         elif mainMenuAnswer == 2:
-            viewStatistics()
+            register()
+            time.sleep(2)
+            mainMenu()
         elif mainMenuAnswer == 3:
-            viewAccount()
+            viewStatistics()
         elif mainMenuAnswer == 4:
-            viewGameCollection()
+            viewAccount()
         elif mainMenuAnswer == 5:
-            viewGithub()
+            viewGameCollection()
         elif mainMenuAnswer == 6:
+            viewGithub()
+        elif mainMenuAnswer == 7:
             exit()
     except ValueError:
         print("Please enter a number!")
@@ -108,8 +113,7 @@ def playerAccountQuestion():
         print("Player", xAmountPlayer+1,
               "do you have an account, or do you want to play as a guest?")
         print("1. I have an account")
-        print("2. I want to create an account")
-        print("3. I want to play as a guest")
+        print("2. I want to play as a guest")
         playerAnswer = input(">>> ")
         try:
             playerAnswer = int(playerAnswer)
@@ -121,16 +125,6 @@ def playerAccountQuestion():
                 addPresentPlayer(username)
                 xAmountPlayer = xAmountPlayer + 1
             elif playerAnswer == 2:
-                while not register():
-                    register()
-                print("you have successfully created an account")
-                print("please login again to continue")
-                inputInformation()
-                while not login(username, password):
-                    inputInformation()
-                addPresentPlayer(username)
-                xAmountPlayer = xAmountPlayer + 1
-            elif playerAnswer == 3:
                 nameGuest()
                 xAmountPlayer = xAmountPlayer+1
             else:
