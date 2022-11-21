@@ -201,4 +201,3 @@ def mainGame():
         switchPlayer()
 
 mainGame()
-

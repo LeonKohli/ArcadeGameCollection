@@ -1,6 +1,7 @@
 # define a random word out of wordlist-german.txt
 
 from random import randint
+import os
 hangman_art = [
     """
     +---+
@@ -77,7 +78,7 @@ hangman_art = [
 ]
 
 
-wordlist = open("wordlist-german.txt", "r")
+wordlist = open(os.path.dirname(os.path.abspath(__file__))+"\wordlist-german.txt", "r")
 wordlist = wordlist.readlines()
 wordlist = [word.strip() for word in wordlist]
 word = wordlist[randint(0, len(wordlist)-1)]

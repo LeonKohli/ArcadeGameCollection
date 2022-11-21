@@ -14,6 +14,7 @@ def login(username,password):
         else:
             print("Your username or password is incorrect!")
             return False
+    txt.close
 
 
 def register():
