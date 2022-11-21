@@ -7,8 +7,8 @@ from login_modul.login import *
 import time
 import os
 from colorama import *          # colorama module to print colors in the terminal
-# there is no need of reset every color effekt in the code duo this setting
-init(autoreset=True)
+init(autoreset=True)            # there is no need of reset every color effekt in the code duo this setting
+
 
 
 # main menu
@@ -49,8 +49,6 @@ def mainMenu():
         mainMenu()
 
 # welcome message
-
-
 def welcomeMessage():
     print("Welcome to the Acade Game Collection")
     print()
@@ -123,12 +121,15 @@ def playerAccountQuestion():
                 addPresentPlayer(username)
                 xAmountPlayer = xAmountPlayer + 1
             elif playerAnswer == 2:
-                if register():
+                while not register():
+                    register()
+                print("you have successfully created an account")
+                print("please login again to continue")
+                inputInformation()
+                while not login(username, password):
                     inputInformation()
-                    while not login(username, password):
-                        inputInformation()
-                    addPresentPlayer(username)
-                    xAmountPlayer = xAmountPlayer + 1
+                addPresentPlayer(username)
+                xAmountPlayer = xAmountPlayer + 1
             elif playerAnswer == 3:
                 nameGuest()
                 xAmountPlayer = xAmountPlayer+1
