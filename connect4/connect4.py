@@ -23,23 +23,19 @@ init(autoreset=True)
 # <<<<<<<<<< variables >>>>>>>>>>>>>>>>>
 won = False             # variable to check if a player has won
 players = ["🟡", "🔴"]  # player 1 is yellow and player 2 is red    #? need to implement player for the login
-gameBoard = [
-            ["", "", "", "", "", "", ""],   #7 collumns and 6 rows
-            ["", "", "", "", "", "", ""], 
-            ["", "", "", "", "", "", ""], 
-            ["", "", "", "", "", "", ""],
-            ["", "", "", "", "", "", ""], 
-            ["", "", "", "", "", "", ""]
-            ]
+rows = 12    #definiton of rows in the grid              ⬅️➡️
+columns = 12    #definition of collumns in the grid      ⬆️⬇️
+gameBoard = []
+for i in range(rows):
+    gameBoard.append([""] * columns)
+    
 
-
-rows = 6    #definiton of rows in the grid              ⬅️➡️
-columns = 7    #definition of collumns in the grid      ⬆️⬇️
-
-# print the board with given rows and columns
 def printGameBoard():
     for x in range(rows):
-        print("\n   +----+----+----+----+----+----+----+")
+        print("\n   ", end="")
+        for y in range(columns):
+            print("+----", end="")
+        print("+")
         print(" ", " |", end="")
         for y in range(columns):
             if (gameBoard[x][y] == "🟡"):               #if there is a yellow stone print yellow
@@ -48,8 +44,45 @@ def printGameBoard():
                 print("", gameBoard[x][y], end=" |")
             else:
                 print(" ", gameBoard[x][y], end="  |")  #if there is no stone print empty
-    print("\n   +----+----+----+----+----+----+----+")
-    print("      1    2    3    4    5    6    7  \n", end="")
+    print("\n   ", end="")
+    for y in range(columns):
+        print("+----", end="") 
+    print("+") 
+    print("   ", end="")
+    for y in range(columns):
+        print(f" {y+1:>4}", end="") # print the collumn numbers 
+    print("\n", end="")
+
+
+
+
+# gameBoard = [
+#             ["", "", "", "", "", "", ""],   #7 collumns and 6 rows
+#             ["", "", "", "", "", "", ""], 
+#             ["", "", "", "", "", "", ""], 
+#             ["", "", "", "", "", "", ""],
+#             ["", "", "", "", "", "", ""], 
+#             ["", "", "", "", "", "", ""]
+#             ]
+
+
+# rows = 6    #definiton of rows in the grid              ⬅️➡️
+# columns = 7    #definition of collumns in the grid      ⬆️⬇️
+
+# # print the board with given rows and columns
+# def printGameBoard():
+#     for x in range(rows):
+#         print("\n   +----+----+----+----+----+----+----+")
+#         print(" ", " |", end="")
+#         for y in range(columns):
+#             if (gameBoard[x][y] == "🟡"):               #if there is a yellow stone print yellow
+#                 print("", gameBoard[x][y], end=" |")
+#             elif (gameBoard[x][y] == "🔴"):             #if there is a red stone print red
+#                 print("", gameBoard[x][y], end=" |")
+#             else:
+#                 print(" ", gameBoard[x][y], end="  |")  #if there is no stone print empty
+#     print("\n   +----+----+----+----+----+----+----+")
+#     print("      1    2    3    4    5    6    7  \n", end="")
 
 
 
@@ -92,7 +125,7 @@ def playerinput():
         pickedField = input(Fore.BLUE + ">>> ")
         try:
             pickedField = int(pickedField)
-            if pickedField > 8 or pickedField < 1:
+            if pickedField > rows or pickedField < 1:
                 print(Fore.RED + "please enter a number between 1 and 8")
             else:
                 print("you chose column", pickedField)
@@ -113,7 +146,7 @@ def placeStone():
         elif gameBoard[x][pickedField-1] == "🟡" or gameBoard[x][pickedField-1] == "🔴":
             gameBoard[x-1][pickedField-1] = players[0]
             break
-        elif x == 5:
+        elif x == rows-1:
             gameBoard[x][pickedField-1] = players[0]
             break
     
