@@ -23,8 +23,8 @@ init(autoreset=True)
 # <<<<<<<<<< variables >>>>>>>>>>>>>>>>>
 won = False             # variable to check if a player has won
 players = ["🟡", "🔴"]  # player 1 is yellow and player 2 is red    #? need to implement player for the login
-rows = 7    #definiton of rows in the grid              ⬅️➡️
-columns = 7    #definition of collumns in the grid      ⬆️⬇️
+rows = 8    #definiton of rows in the grid              ⬅️➡️
+columns = 8    #definition of collumns in the grid      ⬆️⬇️
 gameBoard = []
 for i in range(rows):
     gameBoard.append([""] * columns)
